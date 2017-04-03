@@ -22,7 +22,11 @@ const userSchema = new Schema({
   recent_searches: [{
     type: String,
     default: ""
-  }]
+  }],
+
+  army: [String], // change to objectID
+  
+
 });
 
 userSchema.pre('save', function(next){
