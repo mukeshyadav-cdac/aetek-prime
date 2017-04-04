@@ -24,9 +24,8 @@ const userSchema = new Schema({
     default: ""
   }],
 
-  army: [String], // change to objectID
-  
-
+  army: [Object], // change to objectID
+  faction: String
 });
 
 userSchema.pre('save', function(next){

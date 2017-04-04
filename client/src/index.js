@@ -12,12 +12,15 @@ import './index.css'
 
 // Components 
 
+// Admin
+import Admin from './components/admin/Admin'
+import AddFighter from './components/admin/AddFighter'
+
 // Common
 import App from './components/common/App'
 import Welcome from './components/common/Welcome'
 
 // Campaign
-import Admin from './components/campaign/Admin'
 import Dashboard from './components/campaign/Dashboard'
 import Map from './components/campaign/Map'
 
@@ -52,6 +55,7 @@ ReactDOM.render(
         <Route path='/map' component={Map} />
         <Route path='/dashboard' component={RequireAuth(Dashboard)} />
         <Route path='/admin' component={RequireAdmin(Admin)} />
+        <Route path='/admin/addfighter' component={RequireAdmin(AddFighter)} />
         <Router path='*' component={Welcome} />
       </Route>
     </Router>

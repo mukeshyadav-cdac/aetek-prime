@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const fighterSchema = new Schema({
-  name: { type: String, default: ""},
+  name: { type: String, default: "", unique: true},
   role: { type: String, default: ""},
-  equipment: { type: String, default: ""},
+  equipment: [{ type: String, default: ""}],
   m: { type: Number, default: 0},
   ws: { type: Number, default: 0},
   bs: { type: Number, default: 0},
@@ -20,7 +20,7 @@ const fighterSchema = new Schema({
   hatred: { type: Boolean, default: false},
   requires_upgrade: { type: Boolean, default: false},
   upgrades: [String],
-  faction: { type: Number, default: 0},
+  faction: { type: String, default: 0},
   upgraded_t: { type: Boolean, default: false},
   upgraded_m: { type: Boolean, default: false},
   upgraded_s: { type: Boolean, default: false},
@@ -33,6 +33,6 @@ const fighterSchema = new Schema({
 
 });
 
-const FighterClass = mongoose.model('user', fighterSchema);
+const FighterClass = mongoose.model('fighter', fighterSchema);
 
 module.exports = FighterClass;
