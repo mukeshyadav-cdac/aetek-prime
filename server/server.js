@@ -5,8 +5,8 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const cors = require('cors')
 
-// db setup with mlab. leaving unsecure because just demonstration
-const MONGO_URI = 'mongodb://michaelzmyers:minarik1@ds145800.mlab.com:45800/aetek-secundus'
+
+const MONGO_URI = require('./config').mongodb_uri
 mongoose.Promise = global.Promise;
 mongoose.connect(MONGO_URI);
 mongoose.connection
