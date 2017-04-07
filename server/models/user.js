@@ -19,10 +19,6 @@ const userSchema = new Schema({
     Type: String,
     Poster: String
   }],
-  recent_searches: [{
-    type: String,
-    default: ""
-  }],
 
   army: [Object], // change to objectID
   faction: String

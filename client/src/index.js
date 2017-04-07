@@ -7,7 +7,7 @@ import reduxThunk from 'redux-thunk'
 import reducers from './reducers'
 import { AUTH_USER, ADMIN_USER } from './actions/types'
 import decode from 'jwt-decode'
-import './index.css'
+import './index.scss'
 
 
 // Components 

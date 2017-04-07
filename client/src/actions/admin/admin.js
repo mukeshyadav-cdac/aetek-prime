@@ -1,7 +1,8 @@
 import axios from 'axios'
 import { browserHistory } from 'react-router'
 import { 
-  ADD_FIGHTER
+  ADD_FIGHTER,
+  TESTING
 } from '../types'
 
 const ROOT_URL = "http://localhost:8001/api"

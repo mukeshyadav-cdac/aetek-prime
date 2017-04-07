@@ -38,3 +38,27 @@ exports.addFavorite = function(req, res, next) {
     }
   })
 }
+
+exports.addFighter = function(req, res, next) {
+  if (!req.get("authorization")) {
+    res.json({error: "You must be logged in to see this page"}).status(422)
+  }
+
+  var userId = decode(req.get("authorization")).sub
+  var newFighter = req.body
+  
+  if (!userId) {
+    res.json({error: "userId not found. please logout and try again"}).status(422)
+  }
+
+  if (!newFighter) {
+    res.json({error: "figher information could not be parsed. Please try again"}).status(422)
+  }
+
+  User.findById(userId, function(err, user) {
+    if(err) {
+      res.json(err).status(501)
+    }
+    user.army.push({hello: "world"})
+  })
+}

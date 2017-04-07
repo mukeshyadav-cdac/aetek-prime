@@ -24,5 +24,6 @@ router.post('/user/addfavorite', Users.addFavorite);
 // fighters
 router.get('/fighter', Campaign.getFighters);
 router.post('/fighter', Campaign.newFighter);
+router.post('/user/addfighter', Users.addFighter); // adds a figher to the logged in user
 
 module.exports = router;
