@@ -10,7 +10,7 @@ exports.getuser = function(req, res, next){
 
   var userId = decode(req.get("authorization")).sub
   var query = User.findById(userId)
-  var promise = query.select("-password").exec()
+  var promise = query.select("-password").populate('army.equipment').exec()
 
   promise.then(function(data) {
     res.json(data).status(200)
@@ -59,6 +59,13 @@ exports.addFighter = function(req, res, next) {
     if(err) {
       res.json(err).status(501)
     }
-    user.army.push({hello: "world"})
+    user.army.push(newFighter)
+    user.save(function(err) {
+      if(err) {
+        res.json(err).status(501)
+      } else {
+        res.json({success: "Added!", newFighter}).status(200)
+      }
+    })
   })
 }

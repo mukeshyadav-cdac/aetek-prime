@@ -12,18 +12,24 @@ const requireAuth = passport.authenticate('jwt', { session: false});
 const requireSignin = passport.authenticate('local', {session: false});
 
 
-// Authentication routes
+// Authentication
 router.post('/signin', requireSignin, Authentication.signin);
 router.post('/signup', Authentication.signup);
 
-// User information routes
+// User
 router.get('/user', Users.getuser);
 router.post('/user/addfavorite', Users.addFavorite);
 
-// Campaign information routes
-// fighters
+// Fighter
 router.get('/fighter', Campaign.getFighters);
 router.post('/fighter', Campaign.newFighter);
-router.post('/user/addfighter', Users.addFighter); // adds a figher to the logged in user
+router.put('/user/addfighter', Users.addFighter); // adds a figher to the logged in user
+
+// Weapon
+router.get('/weapon', Campaign.getWeapons);
+router.get('/weapon/:id', Campaign.getWeapon);
+
+router.post('/weapon', Campaign.addWeapon);
+
 
 module.exports = router;

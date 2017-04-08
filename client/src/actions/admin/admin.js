@@ -1,9 +1,12 @@
 import axios from 'axios'
+
+/* eslint-disable
 import { browserHistory } from 'react-router'
 import { 
-  ADD_FIGHTER,
-  TESTING
+  ADD_FIGHTER
 } from '../types'
+*/
+
 
 const ROOT_URL = "http://localhost:8001/api"
 

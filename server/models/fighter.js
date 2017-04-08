@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const fighterSchema = new Schema({
-  name: { type: String, default: "", unique: true},
+  name: { type: String, default: ""},
   role: { type: String, default: ""},
-  equipment: [{ type: String, default: ""}],
+  equipment: [{ type: Schema.Types.ObjectId, ref: 'weapon'}],
   m: { type: Number, default: 0},
   ws: { type: Number, default: 0},
   bs: { type: Number, default: 0},

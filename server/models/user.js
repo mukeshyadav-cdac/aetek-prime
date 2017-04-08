@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt-nodejs');
+const fighterSchema = require('./fighter').model('fighter').schema
 
 const userSchema = new Schema({
   first: String,
@@ -20,7 +21,7 @@ const userSchema = new Schema({
     Poster: String
   }],
 
-  army: [Object], // change to objectID
+  army: [fighterSchema], // change to objectID
   faction: String
 });
 

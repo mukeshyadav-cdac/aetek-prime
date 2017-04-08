@@ -1,5 +1,27 @@
 const User = require('../models/user');
 const Fighter = require('../models/fighter')
+const Weapon = require('../models/weapon')
+
+const decode = require('jwt-decode')
+
+const checkIfLoggedIn = function (jwt) {
+  if (!jwt) {
+    return false
+  } else {
+    return true
+  }
+}
+
+const checkIfAdmin = function (jwt) {
+  var role = decode(jwt).role
+  if (role != "admin") {
+    return false
+  } else {
+    return true
+  }
+}
+
+// Fighters
 
 exports.getFighters = function(req, res, next){
   
@@ -28,8 +50,68 @@ exports.newFighter = function(req, res, next){
         console.log(err);
         res.json(err).status(501)
       } else {
-        res.json(fighter).status(200)
+        res.json({success: "Added!", fighter}).status(200)
       }
     })
   })
+}
+
+
+// Weapons
+
+exports.getWeapons = function(req, res, next) {
+  
+  if(!checkIfLoggedIn(req.get("authorization"))) {
+    res.json({error: "You must be logged in"}).status(422)
+  }
+
+  if(!checkIfAdmin(req.get("authorization"))){
+    res.json({error: "You must be an admin to perform this task"}).status(422)
+  }
+
+  var query = Weapon.find()
+  var promise = query.exec()
+
+  promise.then(function(data) {
+    res.json(data).status(200)
+  })
+
+}
+
+exports.getWeapon = function(req, res, next) {
+  
+  var query = Weapon.findById(req.params.id)
+  var promise = query.exec()
+
+  promise
+    .then(function(data) {
+      res.json(data).status(201)
+    })
+    .catch(function(err) {
+      res.json(err).status(501)
+    })
+}
+
+exports.addWeapon = function(req, res, next) {
+
+  if(!checkIfLoggedIn(req.get("authorization"))) {
+    res.json({error: "You must be logged in"}).status(422)
+  }
+
+  if(!checkIfAdmin(req.get("authorization"))){
+    res.json({error: "You must be an admin to perform this task"}).status(422)
+  }
+
+  var newWeapon = new Weapon(req.body)
+
+  newWeapon.save(function(err, weapon) {
+    if(err) {
+      console.log(err)
+      res.json(err).status(501)
+    } else {
+      res.json({success: "Added!", weapon}).status(200)
+    }
+  })
+
+
 }
