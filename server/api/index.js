@@ -32,4 +32,9 @@ router.get('/weapon/:id', Campaign.getWeapon);
 router.post('/weapon', Campaign.addWeapon);
 
 
+// Faction
+router.post('/faction', Campaign.addFaction);
+router.get('/faction', Campaign.getFactions);
+
+
 module.exports = router;

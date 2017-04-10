@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const upgradeSchema = new Schema({
-  name: { type: String, default: "", unique: true},
+  name: { type: String, default: ""},
   cost: { type: Number, default: 0},
   type: { type: String, default: ""},
   description: { type: String, default: ""}

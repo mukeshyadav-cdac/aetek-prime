@@ -13,13 +13,6 @@ const userSchema = new Schema({
     lowercase: true
   },
   password: String,
-  favorites: [{
-    Title: String,
-    Year: String,
-    imdbID: String,
-    Type: String,
-    Poster: String
-  }],
 
   army: [fighterSchema], // change to objectID
   faction: String

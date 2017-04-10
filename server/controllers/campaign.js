@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const Fighter = require('../models/fighter')
 const Weapon = require('../models/weapon')
+const Faction = require('../models/faction')
 
 const decode = require('jwt-decode')
 
@@ -114,4 +115,30 @@ exports.addWeapon = function(req, res, next) {
   })
 
 
+}
+
+// Faction
+
+exports.addFaction = function(req, res, next) {
+
+  var newFaction = new Faction(req.body)
+
+  newFaction.save(function(err, faction) {
+    if(err) {
+      res.json(err).status(501)
+    } else {
+      res.json(faction).status(200)
+    }
+  })
+
+}
+
+exports.getFactions = function (req, res, next) { 
+
+  var query = Faction.find()
+  var promise = query.exec()
+
+  promise.then(function(data) {
+    res.json(data).status(200)
+  })
 }

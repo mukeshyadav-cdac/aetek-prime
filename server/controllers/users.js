@@ -10,7 +10,7 @@ exports.getuser = function(req, res, next){
 
   var userId = decode(req.get("authorization")).sub
   var query = User.findById(userId)
-  var promise = query.select("-password").populate('army.equipment').exec()
+  var promise = query.select("-password").populate('army.upgrades').populate('army.equipment').exec()
 
   promise.then(function(data) {
     res.json(data).status(200)
