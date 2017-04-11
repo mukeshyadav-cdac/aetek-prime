@@ -136,7 +136,7 @@ exports.addFaction = function(req, res, next) {
 exports.getFactions = function (req, res, next) { 
 
   var query = Faction.find()
-  var promise = query.exec()
+  var promise = query.populate('weapons_and_equipment').populate('available_fighters.default_equipment').exec()
 
   promise.then(function(data) {
     res.json(data).status(200)
