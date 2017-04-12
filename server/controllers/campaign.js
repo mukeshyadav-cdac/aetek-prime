@@ -95,22 +95,37 @@ exports.getWeapon = function(req, res, next) {
 
 exports.addWeapon = function(req, res, next) {
 
-  if(!checkIfLoggedIn(req.get("authorization"))) {
-    res.json({error: "You must be logged in"}).status(422)
-  }
+  // if(!checkIfLoggedIn(req.get("authorization"))) {
+  //   res.json({error: "You must be logged in"}).status(422)
+  // }
 
-  if(!checkIfAdmin(req.get("authorization"))){
-    res.json({error: "You must be an admin to perform this task"}).status(422)
-  }
+  // if(!checkIfAdmin(req.get("authorization"))){
+  //   res.json({error: "You must be an admin to perform this task"}).status(422)
+  // }
 
   var newWeapon = new Weapon(req.body)
+
+
 
   newWeapon.save(function(err, weapon) {
     if(err) {
       console.log(err)
       res.json(err).status(501)
     } else {
-      res.json({success: "Added!", weapon}).status(200)
+      Faction.findOne({name: weapon.faction}, function(err, faction) {
+        if(err) {
+          res.json(err).status(501)
+        } else {
+          faction.weapons_and_equipment.push(weapon._id)
+          faction.save(function(err, weapon) {
+            if(err) {
+              res.json(err).status(501)
+            } else {
+              res.json({success: "Added!"}).status(200)
+            }
+          })
+        }
+      })
     }
   })
 
@@ -133,8 +148,19 @@ exports.addFaction = function(req, res, next) {
 
 }
 
-exports.getFactions = function (req, res, next) { 
+exports.getFaction = function(req, res, next) {
 
+
+  var query = Faction.find({name: req.params.name})
+  var promise = query.populate('weapons_and_equipment').exec()
+
+  promise.then(function(data) {
+    res.json(data).status(200)
+  })
+
+}
+
+exports.getFactions = function (req, res, next) { 
   var query = Faction.find()
   var promise = query.populate('weapons_and_equipment').populate('available_fighters.default_equipment').exec()
 
