@@ -1,9 +1,11 @@
-node_modules
+**/*.DS_Store
+server/config.js
+server/node_modules
+server/src/config.js
+server/build
+
 client/node_modules
 client/build
-server/config.js
-
-client/.DS_Store
 client/.env
 client/npm-debug.log*
 client/yarn-debug.log*

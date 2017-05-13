@@ -4,9 +4,9 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const cors = require('cors')
+const config = require('./config')
 
-
-const MONGO_URI = require('./config').mongodb_uri
+const MONGO_URI = config.mongodb_uri
 mongoose.Promise = global.Promise;
 mongoose.connect(MONGO_URI);
 mongoose.connection
@@ -39,6 +39,10 @@ app.use('/api', apiRoutes)
 // error handling
 app.use(function (err, req, res, next) {
   res.status(err.status || 500)
+})
+
+app.listen(config.port, function () {
+  console.log('running at localhost:' + config.port)
 })
 
 module.exports = app;

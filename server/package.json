@@ -4,9 +4,10 @@
   "description": "Coding challenge for Embrace.io",
   "main": "index.js",
   "scripts": {
-    "webpack": "webpack",
-    "start": "node bin/www",
-    "dev": "concurrently \"npm start\" \"webpack-dev-server\""
+    "start": "npm run build && node dist/server.js",
+    "dev": "nodemon src/server.js --exec babel-node",
+    "build": "babel src -d dist",
+    "test": "mocha --compilers js:babel-register"
   },
   "author": "Michael Myers",
   "license": "ISC",
@@ -27,11 +28,16 @@
     "sass-loader": "^6.0.3"
   },
   "devDependencies": {
+    "babel-cli": "^6.24.1",
     "babel-core": "^6.24.0",
     "babel-loader": "^6.4.1",
     "babel-preset-es2015": "^6.24.0",
+    "babel-preset-latest": "^6.24.1",
     "babel-preset-react": "^6.23.0",
+    "babel-register": "^6.24.1",
     "concurrently": "^3.4.0",
+    "mocha": "^3.3.0",
+    "nodemon": "^1.11.0",
     "webpack": "^2.3.1"
   }
 }
