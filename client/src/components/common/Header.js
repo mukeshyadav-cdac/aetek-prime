@@ -29,7 +29,7 @@ class Header extends Component {
       ]
     } else {
       return [
-        
+
           <li className='nav-item' data-toggle="collapse" data-target="#navbar" key="signin">
             <Link className='nav-link' to="/signin" >Sign In</Link>
           </li>,
@@ -42,7 +42,7 @@ class Header extends Component {
 
   render(){
     return (
-      <nav className="navbar navbar-inverse navbar-fixed-top">
+      <nav className="navbar navbar-inverse">
         <div className="container-fluid">
           <div className="navbar-header">
             <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
