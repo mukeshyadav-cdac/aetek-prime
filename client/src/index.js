@@ -10,11 +10,12 @@ import decode from 'jwt-decode'
 import './index.scss'
 
 
-// Components 
+// Components
 
 // Admin
 import Admin from './components/admin/Admin'
 import AddFighter from './components/admin/AddFighter'
+import AddWeapon from './components/admin/AddWeapon'
 
 // Common
 import App from './components/common/App'
@@ -32,7 +33,7 @@ import SignOut from './components/auth/signout'
 import SignUp from './components/auth/signup'
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore)
-const store = createStoreWithMiddleware(reducers, 
+const store = createStoreWithMiddleware(reducers,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 const token = localStorage.getItem('token')
@@ -56,6 +57,7 @@ ReactDOM.render(
         <Route path='/dashboard' component={RequireAuth(Dashboard)} />
         <Route path='/admin' component={RequireAdmin(Admin)} />
         <Route path='/admin/addfighter' component={RequireAdmin(AddFighter)} />
+        <Route path='/admin/addWeapon' component={RequireAdmin(AddWeapon)} />
         <Router path='*' component={Welcome} />
       </Route>
     </Router>

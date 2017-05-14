@@ -7,9 +7,11 @@ const passportService = require('../services/passport');
 const Authentication = require('../controllers/authentication');
 const Users = require('../controllers/users');
 const Campaign = require('../controllers/campaign')
+import Weapons from '../controllers/weapons';
 
 const requireAuth = passport.authenticate('jwt', { session: false});
 const requireSignin = passport.authenticate('local', {session: false});
+
 
 
 // Authentication
@@ -27,6 +29,9 @@ router.put('/user/addfighter', Users.addFighter); // adds a figher to the logged
 
 // Weapon
 router.get('/weapon', Campaign.getWeapons);
+router.get('/weapon/categories', Weapons.getCategories);
+router.post('/weapon/addCategory', requireAuth, Weapons.addCategory);
+router.post('/weapon', requireAuth, Weapons.newWeapon);
 router.get('/weapon/:id', Campaign.getWeapon);
 
 router.post('/weapon', Campaign.addWeapon);

@@ -1,9 +1,10 @@
-const passport = require('passport')
-const User = require('../models/user')
-const config = require('../config')
-const JwtStrategy = require('passport-jwt').Strategy
-const ExtractJwt = require('passport-jwt').ExtractJwt
-const LocalStrategy = require('passport-local')
+import passport from 'passport';
+import User from '../models/user';
+import config from '../config';
+import LocalStrategy from 'passport-local';
+
+const JwtStrategy = require('passport-jwt').Strategy;
+const ExtractJwt = require('passport-jwt').ExtractJwt;
 
 //local Strategy
 const localOptions = {usernameField: 'email'}
@@ -24,12 +25,10 @@ const localLogin = new LocalStrategy(localOptions, function(email, password, don
 
 //json web token Strategy
 const jwtOptions = {
-  jwtFromRequest: ExtractJwt.fromHeader('authorization'),
+  jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('Bearer'),
   secretOrKey: config.secret
 };
 const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done){
-
-
   User.findById(payload.sub, function(err, user){
     if(err) { return done(err, false)}
 
@@ -41,7 +40,6 @@ const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done){
 
   })
 })
-
 
 passport.use(jwtLogin);
 passport.use(localLogin);

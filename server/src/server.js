@@ -1,12 +1,13 @@
-const path = require('path')
-const fs = require('fs')
-const express = require('express')
-const bodyParser = require('body-parser')
-const mongoose = require('mongoose')
-const cors = require('cors')
-const config = require('./config')
+import path from 'path';
+import fs from 'fs';
+import express from 'express';
+import bodyParser from 'body-parser';
+import mongoose from 'mongoose';
+import cors from 'cors';
+import config from './config';
 
 const MONGO_URI = config.mongodb_uri
+
 mongoose.Promise = global.Promise;
 mongoose.connect(MONGO_URI);
 mongoose.connection
@@ -44,5 +45,3 @@ app.use(function (err, req, res, next) {
 app.listen(config.port, function () {
   console.log('running at localhost:' + config.port)
 })
-
-module.exports = app;

@@ -8,6 +8,8 @@ class Admin extends Component {
         Admin
         <div>
           <Link to="/admin/addfighter">Add new fighter to a faction list</Link>
+          <br/>
+          <Link to="/admin/addweapon">Add new weapon</Link>
         </div>
       </div>
     );
