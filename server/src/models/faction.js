@@ -29,7 +29,8 @@ const factionSchema = new Schema({
   minimum_team_size: { type: Number, default: 0},
   maximum_team_size: { type: Number, default: 0},
   weapons_and_equipment: [{type: Schema.Types.ObjectId, ref: 'weapon'}],
-  number_of_specialists: { type: Number, default: 2}
+  number_of_specialists: { type: Number, default: 2},
+  total_point: {type: Number, default: 0}
 });
 
 
