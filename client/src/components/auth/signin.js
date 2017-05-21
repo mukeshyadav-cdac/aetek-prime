@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form'
 import * as actions from '../../actions/auth/authentication'
 
@@ -26,7 +26,7 @@ class SignIn extends Component {
     // before doing validation. I'll be happy to send in validated examples
     return (
     <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-      
+
       <div className="form-group">
         <label htmlFor="email">Email: </label>
         <Field className="form-control" name="email" component="input" type="text" />

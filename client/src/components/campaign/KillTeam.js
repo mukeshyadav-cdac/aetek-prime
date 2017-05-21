@@ -6,7 +6,7 @@ import '../../../node_modules/rpg-awesome/css/rpg-awesome.min.css'
 class KillTeam extends Component {
 
   renderModel() {
-    return [ 
+    return [
       <tr key="1">
         <td className="shrink" data-label="Leader"><i className="ra ra-aura"></i></td>
         <td data-label="Name">Colvus</td>

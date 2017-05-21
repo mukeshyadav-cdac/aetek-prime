@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 
 class Header extends Component {
 
@@ -8,8 +8,11 @@ class Header extends Component {
     if(this.props.admin) {
       return [
         <li className='nav-item' data-toggle="collapse" data-target="#navbar" key="admin">
-            <Link className='nav-link' to="/admin" >Admin</Link>
-          </li>
+          <Link className='nav-link' to="/admin" >Admin</Link>
+        </li>,
+        <li className='nav-item' data-toggle="collapse" data-target="#navbar" key="factions">
+          <Link className='nav-link' to="/admin/factions" >Factions</Link>
+        </li>
       ]
     }
   }

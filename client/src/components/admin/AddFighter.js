@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form'
-import { connect } from 'react-redux'
+import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
 import * as actions from '../../actions/admin/admin'
 
 import './AddFighter.css'
@@ -38,7 +38,7 @@ class AddFighter extends Component {
             <label htmlFor="cost">Cost: </label>
             <Field className="form-control" name="cost" component="input" type="number" />
           </div>
-          
+
           <div className="form-group">
             <label htmlFor="faction">Faction: </label>
             <Field className="form-control" name="faction" component="select">
@@ -64,7 +64,7 @@ class AddFighter extends Component {
               <Field className="form-control" name="bs" component="input" type="number" />
             </div>
 
-            
+
           </div>
 
           <div className='row'>
@@ -77,13 +77,13 @@ class AddFighter extends Component {
               <label htmlFor="t">t: </label>
               <Field className="form-control" name="t" component="input" type="number" />
             </div>
-            
+
             <div className="col-xs-4">
               <label htmlFor="w">w: </label>
               <Field className="form-control" name="w" component="input" type="number" />
             </div>
 
-            
+
           </div>
 
           <div className='row'>
@@ -96,13 +96,13 @@ class AddFighter extends Component {
               <label htmlFor="a">a: </label>
               <Field className="form-control" name="a" component="input" type="number" />
             </div>
-            
+
             <div className="col-xs-4">
               <label htmlFor="ld">ld: </label>
               <Field className="form-control" name="ld" component="input" type="number" />
             </div>
 
-            
+
           </div>
           <div className="form-group"><br />
             <button type="submit" className="btn btn-primary form-control">Submit</button>

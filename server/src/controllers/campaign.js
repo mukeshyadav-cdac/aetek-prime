@@ -25,7 +25,7 @@ const checkIfAdmin = function (jwt) {
 // Fighters
 
 exports.getFighters = function(req, res, next){
-  
+
   var query = Fighter.find()
   var promise = query.exec()
 
@@ -61,7 +61,7 @@ exports.newFighter = function(req, res, next){
 // Weapons
 
 exports.getWeapons = function(req, res, next) {
-  
+
   if(!checkIfLoggedIn(req.get("authorization"))) {
     res.json({error: "You must be logged in"}).status(422)
   }
@@ -80,7 +80,7 @@ exports.getWeapons = function(req, res, next) {
 }
 
 exports.getWeapon = function(req, res, next) {
-  
+
   var query = Weapon.findById(req.params.id)
   var promise = query.exec()
 
@@ -160,11 +160,11 @@ exports.getFaction = function(req, res, next) {
 
 }
 
-exports.getFactions = function (req, res, next) { 
+exports.getFactions = function (req, res, next) {
   var query = Faction.find()
   var promise = query.populate('weapons_and_equipment').populate('available_fighters.default_equipment').exec()
 
   promise.then(function(data) {
-    res.json(data).status(200)
+    res.json({factions: data}).status(200)
   })
 }

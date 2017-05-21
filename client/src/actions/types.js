@@ -24,3 +24,7 @@ export const START_FACTION_SAVE = 'start_faction_save'
 export const SAVE_FACTION_SUCCESS= 'save_faction_success'
 export const SAVE_FACTION_FAIL = 'save_faction_fail'
 
+export const START_FACTIONS_GET = 'start_factions_save'
+export const GET_FACTIONS_SUCCESS= 'get_factions_success'
+export const GET_FACTIONS_FAIL = 'get_factions_fail'
+

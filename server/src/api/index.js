@@ -39,7 +39,7 @@ router.post('/weapon', Campaign.addWeapon);
 
 // Faction
 router.post('/faction', Campaign.addFaction);
-router.get('/faction', Campaign.getFactions);
+router.get('/factions', Campaign.getFactions);
 router.get('/faction/:name', Campaign.getFaction)
 
 
