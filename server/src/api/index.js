@@ -38,9 +38,10 @@ router.post('/weapon', Campaign.addWeapon);
 
 
 // Faction
-router.post('/faction', Campaign.addFaction);
+router.post('/factions', Campaign.addFaction);
 router.get('/factions', Campaign.getFactions);
-router.get('/faction/:name', Campaign.getFaction)
+router.get('/factions/:id', Campaign.getFaction)
+router.put('/factions/:id/update', Campaign.updateFaction)
 
 
 module.exports = router;

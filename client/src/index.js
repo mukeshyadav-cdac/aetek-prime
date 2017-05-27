@@ -15,7 +15,9 @@ import './index.scss'
 // Admin
 import Admin from './components/admin/Admin'
 import AddFighter from './components/admin/AddFighter'
+
 import AddWeapon from './components/admin/AddWeapon'
+import ShowFaction from './components/admin/ShowFaction'
 import AddFaction from './components/admin/AddFaction'
 import Factions from './components/admin/Factions'
 
@@ -61,7 +63,10 @@ ReactDOM.render(
           <Route path='/map' component={Map} />
           <Route path='/dashboard' component={RequireAuth(Dashboard)} />
           <Route exact path='/admin' component={RequireAdmin(Admin)} />
-          <Route  path='/admin/factions' component={RequireAdmin(Factions)} />
+
+          <Route exact path='/admin/factions' component={RequireAdmin(Factions)} />
+          <Route exact path='/admin/factions/:id' component={RequireAdmin(ShowFaction)} />
+          <Route exact path='/admin/factions/:id/edit' component={RequireAdmin(AddFaction)} />
           <Route  path='/admin/addFaction' component={RequireAdmin(AddFaction)} />
           <Route  path='/admin/addfighter' component={RequireAdmin(AddFighter)} />
           <Route  path='/admin/addWeapon' component={RequireAdmin(AddWeapon)} />

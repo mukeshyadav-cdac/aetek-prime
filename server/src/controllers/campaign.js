@@ -148,11 +148,20 @@ exports.addFaction = function(req, res, next) {
 
 }
 
+exports.updateFaction = function(req, res, next) {
+  delete req.body._id;
+  let faction = Faction.findOneAndUpdate({_id: req.params.id}, req.body, function(err, faction) {
+    if(err) {
+      res.json(err).status(501)
+    } else {
+      res.json(faction).status(200)
+    }
+  });
+}
+
 exports.getFaction = function(req, res, next) {
-
-
-  var query = Faction.find({name: req.params.name})
-  var promise = query.populate('weapons_and_equipment').exec()
+  var query = Faction.findOne({_id: req.params.id})
+  var promise = query.exec();
 
   promise.then(function(data) {
     res.json(data).status(200)

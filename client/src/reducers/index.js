@@ -10,7 +10,7 @@ const rootReducer = combineReducers({
   form,
   auth: authReducer,
   weapon: weaponReducer,
-  faction: factionReducer
+  factionStore: factionReducer
 });
 
 export default rootReducer;
